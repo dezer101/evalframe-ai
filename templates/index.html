@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a1c">
+  <title>EvalFrame — AI Quality Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail">
+      <a class="brand" href="#top" aria-label="EvalFrame home"><span class="brand-mark">e<span>f</span></span><span>EVALFRAME<small>AI QUALITY LAB</small></span></a>
+      <div class="rail-nav"><span class="nav-label">WORKSPACE</span><a class="nav-item active" href="#overview"><span class="nav-glyph">◫</span>Overview<i></i></a><a class="nav-item" href="#cases"><span class="nav-glyph">⌕</span>Test cases<b id="case-nav-count">—</b></a><a class="nav-item" href="#method"><span class="nav-glyph">⌘</span>Method</a></div>
+      <div class="rail-bottom"><div class="local-pill"><span></span> LOCAL WORKSPACE</div><p>Sample benchmark<br>runs on this device.</p><div class="rail-foot">EVALFRAME / 01<br>BUILT FOR INSPECTION</div></div>
+    </aside>
+    <main id="top">
+      <header class="topline"><div class="crumb"><span>LAB</span><i>/</i> RETRIEVAL EVALUATION</div><div class="top-right"><span class="data-label"><span class="pulse-dot"></span> SYNTHETIC DATASET</span><a href="https://github.com/dezer101/evalframe-ai" target="_blank" rel="noreferrer" class="repo-link">SOURCE <span>↗</span></a></div></header>
+      <section class="intro" id="overview"><div class="intro-copy"><div class="eyebrow"><span>EXPERIMENT 01</span><i></i> SEARCH QUALITY</div><h1>Does the change<br>make it <em>better?</em></h1><p>Run the same labelled support questions through two retrieval approaches. See what improved, what regressed, and where the system should stay quiet.</p><div class="intro-meta"><span><b>12</b> REVIEWABLE CASES</span><span><b>02</b> RANKING STRATEGIES</span><span><b>00</b> API KEYS</span></div></div><div class="visual-card" aria-hidden="true"><div class="visual-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-core"><span>EF</span></div><div class="viz-tag tag-a">RETRIEVE <b>01</b></div><div class="viz-tag tag-b">COMPARE <b>02</b></div><div class="viz-tag tag-c">INSPECT <b>03</b></div><span class="axis axis-x"></span><span class="axis axis-y"></span></div></section>
+      <section class="control-panel"><div class="panel-heading"><div><span class="micro-label">01 — RUN CONFIGURATION</span><h2>Set the retrieval check</h2></div><span class="deterministic"><i></i> DETERMINISTIC RUN</span></div><div class="controls"><label class="select-control">RESULTS TO INSPECT<select id="top-k"><option value="1">Top 1</option><option value="3" selected>Top 3</option><option value="5">Top 5</option></select></label><label class="range-control">MINIMUM EVIDENCE SCORE <span id="threshold-value">0.10</span><input id="threshold" type="range" min="0" max="0.5" value="0.10" step="0.01"><span class="range-hint"><span>0.00 · allow weak matches</span><span>0.50 · require stronger match</span></span></label><button id="run-button" class="run-button"><span>Run benchmark</span><b>↗</b></button></div><div class="disclaimer"><span>i</span>Scores are search heuristics over this fictional sample set, not probabilities or production quality claims.</div></section>
+      <section id="results" class="results" aria-live="polite"><div class="empty-state"><div class="empty-mark">↗</div><span class="micro-label">READY WHEN YOU ARE</span><h2>Run a benchmark to compare the two approaches.</h2><p>Every case is visible, so you can inspect a miss instead of trusting one overall score.</p></div></section>
+      <section class="case-section" id="cases"><div class="section-head"><div><span class="micro-label">02 — THE TEST SET</span><h2>Cases worth checking</h2></div><span class="subtle-count" id="case-count-label">Loading sample cases</span></div><div class="case-strip" id="case-strip"></div></section>
+      <section class="method-section" id="method"><div><span class="micro-label">03 — UNDER THE HOOD</span><h2>Small set.<br><em>Open workings.</em></h2></div><div class="method-copy"><p>This lab keeps the evaluation loop deliberately inspectable: cases have expected sources, the ranking rules are visible in code, and a regression appears next to the exact question it affects.</p><div class="method-flow"><div><b>01</b><span>FIXED CASES<small>Same questions, same labels</small></span></div><i>→</i><div><b>02</b><span>TWO RANKERS<small>Body terms vs. context</small></span></div><i>→</i><div><b>03</b><span>CHECK DELTAS<small>Inspect wins and misses</small></span></div></div><div class="scope-note"><span>READ THE SCOPE</span><p>This is a retrieval benchmark, not a language-model answer-quality evaluation. Real use needs representative, human-reviewed cases and broader quality, safety, latency and cost checks.</p></div></div></section>
+      <footer><span>EVALFRAME <b>·</b> AI QUALITY LAB</span><span>PYTHON / FLASK / VANILLA JS</span><a href="https://github.com/dezer101/evalframe-ai" target="_blank" rel="noreferrer">VIEW SOURCE ↗</a></footer>
+    </main>
+  </div>
+  <dialog id="case-dialog" class="case-dialog"><button class="dialog-close" aria-label="Close">×</button><div id="dialog-content"></div></dialog>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
+
